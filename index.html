@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Écrire votre nom" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <script src="assets/js/index.js" defer></script>
+  <title>Aux 33 Tours</title>
+</head>
+<body>
+  <!-- En-tête principal (logo | recherche | utilitaires) -->
+  <header class="site-header">
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
+    <div class="header-inner">
+      <label for="menu-toggle" class="burger-menu">≡</label>
+      <!-- Logo -->
+      <div class="logo">
+        <img src="assets/img/Logo 33Tours.avif" alt="Aux 33 Tours - logo" />
+      </div>
+
+      <!-- Barre de recherche -->
+      <div class="search invisible">
+        <form class="search-form" action="#" method="get">
+          <label for="search-input"></label>
+          <input id="search-input" type="search" placeholder="Recherche..." />
+          <button type="submit">🔍</button>
+        </form>
+      </div>
+
+      <!-- Compte et Panier -->
+      <div class="user-tools">
+        <div class="account">
+          <img src="assets/img/icon/Profile.png" alt=""/>
+          <div class="account-text">
+            <span class="small invisible">Connexion/Inscription</span>
+            <span class="account-link invisible">Mon Compte</span>
+          </div>
+        </div>
+
+        <div class="cart">
+          <img src="assets/img/icon/Buy.svg" alt=""/>
+          <span class="cart-label invisible">Panier</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barre de navigation principale -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li>
+          <a href="#">Accueil</a>
+        </li>
+
+        <!-- Vinyle Neuf -->
+        <li>
+          <input type="checkbox" id="submenu-neuf" class="submenu-checkbox"/>
+          <label for="submenu-neuf" id="menuNeuf" class="sousMenu"></label>
+          <ul class="submenu" id="gridNeuf">
+            <li><a href="#">Alternatif / Indie</a></li>
+            <li><a href="#">Bandes / Effets Sonores</a></li>
+            <li><a href="#">Blues</a></li>
+            <li><a href="#">Classique</a></li>
+            <li><a href="#">Country / Folk</a></li>
+            <li><a href="#">Dance / Electronique</a></li>
+            <li><a href="#">Experimental</a></li>
+            <li><a href="#">Funk / Soul</a></li>
+            <li><a href="#">Hip Hop</a></li>
+            <li><a href="#">Instruments</a></li>
+            <li><a href="#">Jazz</a></li>
+            <li><a href="#">Psych / Prog</a></li>
+            <li><a href="#">Metal / Rock</a></li>
+            <li><a href="#">Rap</a></li>
+            <li><a href="#">Reggae / Dub</a></li>
+          </ul>
+        </li>
+
+        <!-- Vinyle Usagé -->
+        <li>
+          <input type="checkbox" id="submenu-usage" class="submenu-checkbox"/>
+          <label for="submenu-usage" id="menuUsage" class="sousMenu"></label>
+          <ul class="submenu" id="gridUsage">
+            <li><a href="#">Vinyles</a></li>
+            <li><a href="#">CDs</a></li>
+            <li><a href="#">45-TOURS</a></li>
+            <li><a href="#">Raretés</a></li>
+            <li><a href="#">liquidation</a></li>
+            <li><a href="#">Nouveaux Arrivages</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#">Précommandes</a></li>
+
+        <!-- Équipement -->
+        <li>
+          <input type="checkbox" id="submenu-equipement" class="submenu-checkbox"/>
+          <label for="submenu-equipement" id="menuEquipement" class="sousMenu"></label>
+          <ul class="submenu" id="gridEquipement">
+            <li><a href="#">Nouveaux Arrivages</a></li>
+            <li><a href="#">Instruments</a></li>
+            <li><a href="#">Systèmes de Sons</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#">Accessoires</a></li>
+
+        <!-- À propos -->
+        <li>
+          <input id="submenu-propos" class="submenu-checkbox" type="checkbox" />
+          <label for="submenu-propos" id="menuPropos" class="sousMenu"></label>
+          <ul class="submenu" id="gridPropos">
+            <li><a href="#">Livraison</a></li>
+            <li><a href="#">Vous avez des disques à vendre?</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Pour nous joindre</a></li>
+            <li><a href="#">Commandes Spéciales</a></li>
+            <li><a href="#">Guide d'évaluation</a></li>
+            <li><a href="#">Emplois</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <hr>
+  </header>
+
+  <!-- --------------------------Contenu principal-------------------------- -->
+  <main class="site-main">
+    <section class="hero ">
+      <!-- Utilise ton image de bannière -->
+      <img class="publicte" src="assets/img/IMAGE PUB.png" alt="Pressages Japonais - plus de 500 albums importés"/>
+    </section>
+
+    <!-- Catégorisation des produits : titre + bouton 'en voir plus' -->
+    <section class="section-produit">
+      <div class="etiquette-categorie">
+        <h2>En précommande :</h2>
+        <a href="#" class="see-more"></a>
+      </div>
+
+      <div class="rangee-produit">
+        <!-- Carte produit 1 -->
+        <article class="produit">
+          <div class="card-Precommande">Précommander</div>
+          <div class="card-img">
+            <img src="assets/img/produit/Usef Lateef.png" alt="Jazz Mood - Yusef Lateef" />
+          </div>
+          <div class="info-produit">
+            <h3 >Jazz Mood (OJC Series)</h3>
+            <p class="card-sub">Yusef Lateef (Vinyle Neuf)</p>
+            <h4>$52.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 2 -->
+        <article class="produit">
+          <div class="card-Precommande">Précommander</div>
+          <div class="card-img">
+            <img src="assets/img/produit/Paul McCartney.png" alt="Paul McCartney - Wonderful Christmastime" />
+          </div>
+          <div class="info-produit">
+            <h3>Wonderful Christmastime</h3>
+            <p class="card-sub">Paul McCartney (Vinyle Neuf)</p>
+            <h4>$22.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 3 -->
+        <article class="produit">
+          <div class="card-Precommande">Précommander</div>
+          <div class="card-img">
+            <img src="assets/img/produit/Son of aspergy.png" alt="Son Of Spergy - Daniel Caesar" />
+          </div>
+          <div class="info-produit">
+            <h3 id="p3-title">Son Of Spergy</h3>
+            <p class="card-sub">Daniel Caesar (Vinyle Neuf)</p>
+            <h4>$56.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 4 -->
+        <article class="produit">
+          <div class="card-Precommande">Précommander</div>
+          <div class="card-img">
+            <img src="assets/img/produit/Coleman Hawkings.png" alt="Coleman Hawkins and Confreres - Coleman Hawkins" />
+          </div>
+          <div class="info-produit">
+            <h3>Coleman Hawkins And Confreres</h3>
+            <p class="card-sub">Coleman Hawkins (Vinyle Neuf)</p>
+            <h4>$49.99</h4>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-produit">
+      <div class="etiquette-categorie  ">
+        <h2>Nos derniers arrivages NEUFS :</h2>
+        <a href="#" class="see-more"></a>
+      </div>
+
+
+      <div class="rangee-produit">
+        <!-- Carte produit 1 -->
+        <article class="produit">
+
+          <div class="card-img">
+            <img src="assets/img/produit/ff27372a61cc1e70d985d363ae3b3892034efeda.jpg" alt="Drivel - Drivel" />
+          </div>
+          <div class="info-produit">
+            <h3 >Drivel</h3>
+            <p class="card-sub">Drivel (Vinyle Neuf)</p>
+            <h4>$14.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 2 -->
+        <article class="produit">
+
+          <div class="card-img">
+            <img src="assets/img/produit/6bb18140e810de56b6d9f87684fb677f96e8fd0e.jpg" alt="GxUxTxSx - Skatespiracy" />
+          </div>
+          <div class="info-produit">
+            <h3>GxUxTxSx</h3>
+            <p class="card-sub">Skatespiracy (Vinyle Neuf)</p>
+            <h4>$34.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 3 -->
+        <article class="produit">
+
+          <div class="card-img">
+            <img src="assets/img/produit/f712e407f306513f34213dd5fc0fd5f16d151904.jpg" alt="Recall - Recall" />
+          </div>
+          <div class="info-produit">
+            <h3 id="p3-title">Recall</h3>
+            <p class="card-sub">Recall (Vinyle Neuf)</p>
+            <h4>$12.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 4 -->
+        <article class="produit">
+
+          <div class="card-img">
+            <img src="assets/img/produit/7c4bfba1371270adf46172dc00a7627cfcc50187.jpg" alt="Rot / Archagathus - Rot / Archagathus" />
+          </div>
+          <div class="info-produit">
+            <h3>Rot / Archagathus</h3>
+            <p class="card-sub">Rot / Archagathus (Vinyle Neuf)</p>
+            <h4>$16.99</h4>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-produit">
+      <div class="etiquette-categorie">
+        <h2>Nos derniers arrivages USAGÉ:</h2>
+        <a href="#" class="see-more"></a>
+      </div>
+
+      <div class="rangee-produit">
+        <!-- Carte produit 1 -->
+        <article class="produit">
+
+          <div class="card-img">
+            <img src="assets/img/produit/MyballsItch (4).png" alt="Various / Palm / Kontarsky - Musik Fur Violoncello" />
+          </div>
+          <div class="info-produit">
+            <h3 >Various / Palm / Kontarsky</h3>
+            <p class="card-sub">Musik Fur Violoncello (Vinyle Usagé)</p>
+            <h4>$17.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 2 -->
+        <article class="produit">
+
+          <div class="card-img">
+            <img src="assets/img/produit/MyballsItch (3).png" alt="Van Der Graaf Generator - World Record" />
+          </div>
+          <div class="info-produit">
+            <h3>Van Der Graaf Generator</h3>
+            <p class="card-sub">World Record (Vinyle Usagé)</p>
+            <h4>$29.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 3 -->
+        <article class="produit">
+
+          <div class="card-img">
+            <img src="assets/img/produit/MyballsItch (2).png" alt="Soul Jazz Volume One - Various" />
+          </div>
+          <div class="info-produit">
+            <h3 id="p3-title">Soul Jazz Volume One</h3>
+            <p class="card-sub">Various (Vinyle Usagé)</p>
+            <h4>$9.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 4 -->
+        <article class="produit">
+
+          <div class="card-img">
+            <img src="assets/img/produit/MyballsItch (1).png" alt="Handel / Mackerras - Israel in Egypt" />
+          </div>
+          <div class="info-produit">
+            <h3>Handel / Mackerras</h3>
+            <p class="card-sub">Israel in Egypt (Vinyle Usagé)</p>
+            <h4>$9.99</h4>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-produit">
+      <div class="etiquette-categorie">
+        <h2>En liquidation :</h2>
+        <a href="#" class="see-more"></a>
+      </div>
+
+      <div class="rangee-produit">
+        <!-- Carte produit 1 -->
+        <article class="produit">
+          <div class="produit-liquidation">Économisez 25%</div>
+          <div class="card-img">
+            <img src="assets/img/produit/Jumpabridge (3).png" alt="Repetition Is Hell - Lunglust" />
+          </div>
+          <div class="info-produit">
+            <h3 >Repetition Is Hell</h3>
+            <p class="card-sub">Lunglust (Vinyle Neuf)</p>
+            <h4 class="prixrabais">$20.24</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 2 -->
+        <article class="produit">
+          <div class="produit-liquidation">Économisez 31%</div>
+          <div class="card-img">
+            <img src="assets/img/produit/Jumpabridge (2).png" alt="Sun Ra - Spaceways" />
+          </div>
+          <div class="info-produit">
+            <h3>Sun Ra</h3>
+            <p class="card-sub">Spaceways (Vinyle Neuf)</p>
+            <h4 class="prixrabais">$24.74</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 3 -->
+        <article class="produit">
+          <div class="produit-liquidation">Économisez 25%</div>
+          <div class="card-img">
+            <img src="assets/img/produit/Jumpabridge (1).png" alt="Greatest Hits - Ed Bruce" />
+          </div>
+          <div class="info-produit">
+            <h3 id="p3-title">Greatest Hits</h3>
+            <p class="card-sub">Ed Bruce (Vinyle Neuf)</p>
+            <h4 class="prixrabais">$11.99</h4>
+          </div>
+        </article>
+
+        <!-- Carte produit 4 -->
+        <article class="produit">
+          <div class="produit-liquidation">Économisez 25%</div>
+          <div class="card-img">
+            <img src="assets/img/produit/Jumpabridge (1).jpg" alt="Brous One And Friends 1 - Brous One" />
+          </div>
+          <div class="info-produit">
+            <h3>Brous One And Friends 1</h3>
+            <p class="card-sub">Brous One (Vinyle Neuf)</p>
+            <h4 class="prixrabais">$7.49</h4>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <hr>
+
+    <section class="section-produit">
+      <div class="etiquette-categorie">
+          <h2>Notre Emplacement :</h2>
+          <a href="#" class="see-more"></a>
+        </div>
+      <article class="horaire">
+        <div class="horaire-content">
+          <h2 class="horaire-title">Aux 33 Tours</h2>
+        
+          <address class="horaire-address">
+            <p class="adresse-line">1373, avenue Mont-Royal Est,<br>Montréal, Québec</p>
+          </address>
+        
+          <div class="horaire-hours">
+            <h3>Heures d'ouverture</h3>
+            <ul class="HeureOuverture">
+              <li>LUNDI : 10H-18H</li>
+              <li>MARDI : 10H-18H</li>
+              <li>MERCREDI : 10H-18H</li>
+              <li>JEUDI : 10H-20H</li>
+              <li>VENDREDI : 10H-20H</li>
+              <li>SAMEDI : 10H-18H</li>
+              <li>DIMANCHE : 10H-18H</li>
+            </ul>
+          </div>
+        
+          <a class="btn-direction" href="#" role="button">Direction</a>
+        </div>
+      
+        <figure class="horaire-media">
+          <img src="assets/img/ImgEmplacement.png" alt="Intérieur du magasin Aux 33 Tours">
+        </figure>
+      </article>
+    </section>
+  </main>
+
+  <!-- Pied de page minimal (A faire kuhhhh) -->
+  <footer class="site-footer">
+  <div class="footer-top">
+    <div class="ft-feature">
+      <img src="assets/img/icon/HailTheBladKing (4).png" alt="" class="ft-icon">
+      <div>
+        <h4>Livraison gratuite</h4>
+        <p>La livraison est gratuite pour chaque achat de plus de 80$ au Québec (excluant l'équipement audio).</p>
+      </div>
+    </div>
+
+    <div class="ft-feature">
+      <img src="assets/img/icon/HailTheBladKing (1).png" alt="" class="ft-icon">
+      <div>
+        <h4>Politique</h4>
+        <p>Aucun remboursement. Échange ou crédit sous 30 jours pour marchandise neuve défectueuse.</p>
+      </div>
+    </div>
+
+    <div class="ft-feature">
+      <img src="assets/img/icon/HailTheBladKing (3).png" alt="" class="ft-icon">
+      <div>
+        <h4>Téléphone</h4>
+        <p>Vous pouvez communiquer avec nous au 514-524-7397 pendant nos heures d'ouverture.</p>
+      </div>
+    </div>
+
+    <div class="ft-feature">
+      <img src="assets/img/icon/HailTheBladKing (2).png" alt="" class="ft-icon">
+      <div>
+        <h4>Heures d'ouverture</h4>
+        <p>Lundi: 10H-18H</p>
+        <p>Mardi: 10H-18H</p>
+        <p>Mercredi: 10H-18H</p>
+        <p>Jeudi: 10H-20H</p>
+        <p>Vendredi: 10H-20H</p>
+        <p>Samedi: 10H-18H</p>
+        <p>Dimanche: 10H-18H</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer-bottom">
+    <div class="fb-note">
+      <strong>Veuillez noter :</strong>
+      <p>Les images et infos du site peuvent différer des produits réels. L'inventaire se met à jour toutes les 24 h ; certains titres peuvent être en rupture. En cas d'indisponibilité, un remboursement complet sera effectué.</p>
+    </div>
+
+    <nav class="fb-links">
+      <h5>Menu de bas de page</h5>
+      <ul>
+        <li><a href="#">Recherche</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Refund Policy</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </nav>
+
+    <div class="fb-newsletter">
+      <h5>Liste d'envoi</h5>
+      <p>Abonnez-vous afin de recevoir des promotions spéciales :</p>
+      <form class="newsletter-form" action="#" method="post">
+        <label for="newsletter-email" class="sr-only"></label>
+        <input id="newsletter-email" name="email" type="email" placeholder="Votre Courriel">
+        <button type="submit">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer-copyright">
+    <p>&copy; <span id="year"></span> Aux 33 Tours — Tous droits réservés.</p>
+    <nav>
+      <a href="#">Contact</a>
+      <span>·</span>
+      <a href="#">Politique de confidentialité</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

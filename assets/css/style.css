@@ -1,0 +1,953 @@
+:root{
+  --CouleurPrincipal: #ffffff;
+  --CouleurSecondaire: #000000;
+  --GrisPale: #B5B5B5;
+  --Gris: #717171;
+  --GrisFoncee: #2A2A2A;
+  --CouleurHover: #D8B000;
+
+  /* tailles adaptatives basiques */
+  --max-content-width: 75rem;
+  --gutter: 1.25rem;
+  --card-radius: 0.25rem;
+  --transition-fast: 150ms;
+}
+
+html{
+   font-size:1rem;
+   overflow-x: hidden;
+  }
+  
+body{
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #e0e0e0;
+  line-height: 1.4;
+}
+
+.mobile {
+  display: none;
+}
+
+img{ display:block; max-width:100%; height:auto; }
+
+/* =========================
+   Header principal
+   ========================= */
+.site-header{
+  background: var(--CouleurSecondaire);
+  color: var(--CouleurPrincipal);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  box-shadow: 0 0.125rem 0 rgba(0,0,0,0.15);
+}
+
+/* header-inner*/
+.site-header .header-inner{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+  padding: 0.75rem var(--gutter);
+  height: 5rem;
+}
+
+/* search area */
+.search{
+  flex: 1 1 37.5rem;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.search-form{
+  min-width:125%;
+  display:flex;
+  gap:0.5rem;
+  align-items:center;
+  background: var(--CouleurPrincipal);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.search-form input[type="search"]{
+  flex:1;
+  border:0;
+  font-size: 1rem;
+  color:var(--CouleurSecondaire);
+}
+.search-form button{
+  border:0;
+  background: var(--GrisPale);
+  font-size:1.125rem;
+  padding:0.375rem 0.5rem;
+  cursor:pointer;
+}
+
+/* user tools */
+.user-tools{
+  display:flex;
+  gap:1.125rem;
+  align-items:center;
+}
+.user-tools .account,
+.user-tools .cart{
+  display:flex;
+  gap:0.5rem;
+  align-items:center;
+  font-size: 0.8125rem;
+  color: var(--CouleurPrincipal);
+}
+.user-tools img{
+  width: 2.125rem;
+  height: 2.125rem;
+  object-fit:contain;
+}
+
+.account-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-link {
+  font-weight: 700;
+}
+
+/* =========================
+   Navigation principale
+   ========================= */
+.main-nav{
+  position: relative;
+  z-index: 30;
+  background: var(--CouleurSecondaire);
+}
+.nav-list{
+  list-style:none;
+  margin:0;
+  padding: 0.625rem var(--gutter);
+  display:flex;
+  gap: 3vw;
+  align-items:center;
+  justify-content:center;
+  color:var(--CouleurPrincipal);
+  font-weight:600;
+  font-size: 1rem;
+}
+
+/* =========================
+   Sous menu header
+   ========================= */
+.nav-list li a{
+  color: var(--GrisFoncee);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--CouleurPrincipal);
+}
+.nav-list li a:hover{ color: var(--CouleurHover); }
+
+.nav-list li .sousMenu {
+  position: relative;
+  padding-bottom: 0.2rem;
+  transition: color 300ms ease;
+}
+
+/* Avant */
+.nav-list li .sousMenu:hover::before {
+  color: var(--CouleurHover);
+}
+
+.nav-list li #menuNeuf::before {
+  content: "Vinyle Neuf ▼";
+  transition: color 300ms ease;
+}
+
+.nav-list li #menuUsage::before {
+  content: "Vinyle Usagé ▼";
+  transition: color 300ms ease;
+}
+
+.nav-list li #menuEquipement::before {
+  content: "Équipement ▼";
+  transition: color 300ms ease;
+}
+
+.nav-list li #menuPropos::before {
+  content: "À propos ▼";
+  transition: color 300ms ease;
+}
+
+/* Après */
+.nav-list li .sousMenu::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.25rem; /* Hauteur du rectangle */
+  width: 0%;
+  background-color: var(--CouleurHover);
+  transition: width 300ms ease;
+}
+
+/* Animation du rectangle */
+.nav-list li .sousMenu:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   Sous-menus : affichage grid
+   ========================= */
+
+/* style de base des sous-menus (cachés par défaut) */
+.nav-list .submenu {
+  position: absolute;
+  left: 0;       /* tout à gauche de la nav */
+  top: 2.8rem;     /* juste sous la nav */
+  width: calc(100% - 2.5rem);  /* pleine largeur de l’écran */
+  padding: 1rem var(--gutter);
+  background: var(--CouleurSecondaire);
+
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(-1rem);
+  transition: transform 220ms ease, opacity 220ms ease, max-height 260ms ease;
+}
+
+#gridNeuf {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 33.3% 33.3% 33.3%;
+  gap: 0.75rem;
+}
+
+#gridUsage {
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-rows: 50% 50%;
+  justify-items: center;
+  gap: 0.75rem;
+}
+
+#gridEquipement {
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  justify-items: center;
+  gap: 0.75rem;
+}
+
+#gridPropos {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 50% 50%;
+  justify-items: center;
+  gap: 0.75rem;
+}
+
+/* liens dans la grille */
+.nav-list .submenu a{
+  padding: .5rem 0;
+  text-decoration: none;
+  color: var(--CouleurPrincipal);
+  font-weight: 600;
+}
+
+.nav-list .submenu li {
+  list-style: none;
+}
+
+/* Quand la checkbox est cochée, afficher le sous-menu (slide-down) */
+input[type="checkbox"].submenu-checkbox:checked + label + .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  max-height: 15vh;
+  pointer-events: auto;
+}
+
+input[type="checkbox"].submenu-checkbox:checked + label + #gridNeuf {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  min-height: 15vh;
+  pointer-events: auto;
+}
+
+/* empêcher l'interaction quand masqué */
+.nav-list .submenu[style] { pointer-events: none; }
+
+input[type="checkbox"] {
+  display: none;
+}
+/* =========================
+   Hero / bannière
+   ========================= */
+.hero{
+  padding: 2rem 0;
+  background: transparent;
+}
+.hero .publicte{
+  width:100%;
+  max-width: var(--max-content-width);
+  margin:0 auto;
+  display:block;
+  border-radius: var(--card-radius);
+  box-shadow: 0 0.125rem 0 rgba(0,0,0,0.15);
+  object-fit: cover;
+}
+
+/* =========================
+   Section des Produits
+   ========================= */
+.section-produit{
+  max-width: var(--max-content-width);
+  margin:0 auto;
+  padding: 0.5rem 0 3.75rem 0;
+}
+
+.etiquette-categorie{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:1rem;
+}
+.etiquette-categorie h2{
+  background: var(--GrisFoncee);
+  color: var(--CouleurPrincipal);
+  padding: .625rem 1rem;
+  border-radius:.5rem;
+  font-size:1rem;
+}
+
+/* =========================
+   En voir et transition de la mort qui tue
+   ========================= */
+
+/* Effet hover "En voir plus ->" */
+.etiquette-categorie .see-more {
+  color: var(--GrisFoncee);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--CouleurSecondaire);
+
+  position: relative;
+  padding-bottom: 0.2rem;
+  transition: color 300ms ease;
+}
+
+/* Avant */
+.etiquette-categorie .see-more:hover::before {
+  content: "En voir plus: →";
+  color: var(--CouleurHover);
+}
+
+.etiquette-categorie .see-more::before {
+  content: "En voir plus";
+  transition: color 300ms ease;
+}
+
+/* Après */
+.etiquette-categorie .see-more::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.25rem;
+  width: 0%;
+  background-color: var(--CouleurHover);
+  transition: width 300ms ease;
+}
+
+/* Animation du rectangle */
+.etiquette-categorie .see-more:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   Section affichage des produits
+   ========================= */
+
+/* grille des produits  */
+.rangee-produit{
+  display:flex;
+  flex-wrap:wrap;
+  gap: var(--gutter);
+  align-items:flex-start;
+  justify-content:space-between;
+}
+
+/* carte produit - default 4 colonnes */
+.produit{
+  position:relative;
+  background: var(--CouleurPrincipal);
+  border-radius: var(--card-radius);
+  min-height: 24rem;
+  flex: 1 1 calc(25% - (var(--gutter)));
+  max-width: calc(25% - (var(--gutter)));
+  display:flex;
+  flex-direction:column;
+  box-shadow: 0 0.125rem 0 rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+
+/* précommande */
+.produit .card-Precommande{
+  position:absolute;
+  left: 0%;
+  background: var(--Gris);
+  color: var(--CouleurPrincipal);
+  padding: .5rem 1.125rem;
+  border-radius: .5rem;
+  font-weight:700;
+  font-size:.9rem;
+  z-index:5;
+}
+
+/* liquidation */
+.produit .produit-liquidation{
+  position:absolute;
+  left: 0%;
+  background: var(--CouleurHover);
+  color: var(--CouleurPrincipal);
+  padding: .5rem 1.125rem;
+  border-radius: .5rem;
+  font-weight:700;
+  font-size: .9rem;
+  z-index:5;
+}
+
+/* zone image produit */
+.produit .card-img{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #ddd;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.produit .card-img img{ width:100%; height:100%; object-fit:cover; }
+
+/* contenu carte */
+.info-produit{
+  padding: .75rem .875rem 1.125rem .875rem;
+  display:flex;
+  flex-direction:column;
+  gap: .5rem;
+  flex:1;
+}
+.info-produit h3{
+  font-size: 1.25rem;
+  color: #1e1e1e; 
+}
+.info-produit h4{
+  font-size: 1rem;
+}
+.card-sub{ 
+  font-size: 1rem;
+  color: var(--Gris); 
+}
+
+.info-produit .prixrabais {
+  color: var(--CouleurHover);
+}
+
+/* =========================
+   Emplacement
+   ========================= */
+.section-produit { padding-bottom: 2rem; }
+
+.horaire {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "content media";
+  padding: 2.25rem var(--gutter);
+  box-sizing: border-box;
+}
+
+/* contenu gauche */
+.horaire-content {
+  grid-area: content;
+  color: var(--CouleurPrincipal);
+  background: var(--CouleurSecondaire);
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* titres et texte */
+.horaire-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--CouleurPrincipal);
+}
+
+.horaire-address .adresse-line {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--CouleurPrincipal);
+}
+
+/* heures */
+.horaire-hours h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--CouleurPrincipal);
+}
+.HeureOuverture {
+  margin: .5rem 0 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .25rem;
+  color: var(--CouleurPrincipal);
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+/* bouton */
+.btn-direction {
+  display: inline-block;
+  margin-top: .6rem;
+  padding: .7rem 1.25rem;
+  background: var(--CouleurPrincipal);
+  color: var(--CouleurSecondaire);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: .25rem;
+  align-self: start;
+  box-shadow: 0 .125rem 0 rgba(0,0,0,0.15);
+}
+
+/* image / media droite */
+.horaire-media {
+  box-shadow: 0 .125rem .5rem rgba(0,0,0,0.12);
+}
+.horaire-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================
+   Footer
+   ========================= */
+.site-footer {
+  background: var(--CouleurSecondaire);
+  color: var(--CouleurPrincipal);
+  padding: 2rem var(--gutter) 1.5rem var(--gutter);
+  font-size: 1rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding-bottom: 1.5rem;
+}
+
+/* Feature item */
+.ft-feature {
+  display: flex;
+  gap: 1rem;
+  min-height: 4.25rem;
+}
+
+.ft-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Titres et paragraphes */
+.ft-feature h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--CouleurPrincipal);
+}
+.ft-feature p {
+  color: var(--CouleurPrincipal);
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+/* Bottom area: note | links | newsletter */
+.footer-bottom {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, 220px) 320px;
+  gap: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
+}
+
+/* Note */
+.fb-note {
+  color: var(--CouleurPrincipal);
+  font-size: 0.9rem;
+}
+
+/* Links list */
+.fb-links h5 {
+  font-weight: 700;
+}
+.fb-links ul {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+.fb-links a {
+  color: var(--CouleurPrincipal);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.fb-links a:hover { color: var(--CouleurHover); }
+
+/* Newsletter */
+.fb-newsletter h5 { margin: 0 0 0.5rem 0; font-weight:700; }
+.fb-newsletter p { margin: 0 0 0.75rem 0; color: var(--CouleurPrincipal); font-size: 0.9rem; }
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.newsletter-form input[type="email"]{
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 2px solid var(--GrisFoncee);
+  background: transparent;
+  color: var(--CouleurPrincipal);
+}
+.newsletter-form input::placeholder { color: var(--GrisPale) }
+
+.newsletter-form button{
+  padding: 0.6rem 1rem;
+  border-radius: 0.25rem;
+  background: var(--CouleurHover);
+  color: var(--CouleurSecondaire);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.footer-copyright {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+}
+.footer-copyright p {
+  color: var(--CouleurPrincipal);
+  font-size: 0.9rem;
+}
+.footer-copyright nav a {
+  color: var(--CouleurPrincipal);
+  text-decoration: none;
+  margin-left: 0.6rem;
+}
+.footer-copyright nav a:hover { color: var(--CouleurHover); }
+
+/* =========================
+   Menu Burger
+   ========================= */
+.burger-menu {
+  display: none; /* Cacher en desktop */
+  font-size: 2rem;
+  color: var(--CouleurPrincipal);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color var(--transition-fast) ease;
+}
+.burger-menu:hover {
+  color: var(--CouleurHover);
+}
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 991px) {
+  .invisible {
+    display: none;
+   }
+
+  .burger-menu {
+    display: block;
+
+  }
+  .site-header.menu-active {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+  }
+  .main-nav {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: calc(100vh - 7.125rem);
+    height: calc(100dvh - 7.125rem);
+    background: var(--CouleurSecondaire);
+    z-index: 1000;
+    padding: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: transform 240ms ease, visibility 0s linear 240ms;
+  }
+  .menu-checkbox:checked ~ .main-nav {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform 240ms ease, visibility 0s;
+  }
+  .nav-list {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    width: clamp(7.5rem, 35%, 13rem);
+    height: 100%;
+    padding: 2.5rem 0.5rem 1rem;
+    box-sizing: border-box;
+    background: var(--CouleurSecondaire);
+  }
+  .nav-list > li {
+    position: static;
+    text-align: left;
+    border-bottom: 0;
+  }
+  .nav-list > li > a,
+  .nav-list li .sousMenu {
+    display: block;
+    position: relative;
+    padding: 0.75rem 1rem 0.75rem 0;
+    color: var(--CouleurPrincipal);
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 0.875rem;
+  }
+  .nav-list li #menuNeuf::before {
+    content: "Vinyle Neuf";
+  }
+  .nav-list li #menuUsage::before {
+    content: "Vinyle Usagé";
+  }
+  .nav-list li #menuEquipement::before {
+    content: "Équipement";
+  }
+  .nav-list li #menuPropos::before {
+    content: "À propos";
+  }
+  .nav-list li .sousMenu::after {
+    content: "›";
+    left: auto;
+    right: 0.15rem;
+    bottom: auto;
+    width: auto;
+    height: auto;
+    background: none;
+    color: var(--CouleurPrincipal);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  .nav-list li .sousMenu:hover::after {
+    width: auto;
+  }
+  .nav-list li .sousMenu:hover::before,
+  .nav-list .submenu-checkbox:checked + .sousMenu::before,
+  .nav-list .submenu-checkbox:checked + .sousMenu::after {
+    color: var(--CouleurHover);
+  }
+  .nav-list .submenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: clamp(7.5rem, 35%, 13rem);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-items: stretch;
+    gap: 0;
+    width: calc(100% - clamp(7.5rem, 35%, 13rem));
+    height: 100%;
+    max-height: none;
+    min-height: 0;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--GrisFoncee);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: transform 240ms ease, opacity 240ms ease, visibility 0s linear 240ms;
+  }
+  #gridNeuf,
+  #gridUsage,
+  #gridEquipement,
+  #gridPropos {
+    display: flex;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    justify-items: stretch;
+  }
+  input[type="checkbox"].submenu-checkbox:checked + label + .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    max-height: none;
+    min-height: 0;
+    pointer-events: auto;
+    transition: transform 240ms ease, opacity 240ms ease, visibility 0s;
+  }
+  input[type="checkbox"].submenu-checkbox:checked + label + #gridNeuf {
+    min-height: 0;
+  }
+  .nav-list .submenu li {
+    flex: 0 0 auto;
+  }
+  .nav-list .submenu a {
+    display: block;
+    padding: 0.85rem 0.25rem;
+    font-size: 0.875rem;
+  }
+  .submenu {
+    position: static;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: var(--GrisFoncee);
+  }
+
+  /* =========================
+   Étiquette et Catégorie
+   ========================= */
+
+  .etiquette-categorie{
+    display:flex;
+    justify-content:space-between;
+    justify-self: center;
+    margin-bottom:1rem;
+    min-width: calc(85% - (var(--gutter)));
+  }
+
+  /* =========================
+   Section des Produits
+   ========================= */
+
+  .rangee-produit{
+    display:flex;
+    flex-wrap:wrap;
+    gap: var(--gutter);
+    align-items:flex-start;
+    justify-content:center;
+  }
+
+  /* carte produit - 2 colonnes */
+  .produit{
+    flex: 1 1 calc(40% - (var(--gutter)));
+    max-width: calc(40% - (var(--gutter)));
+  }
+
+  /* =========================
+   Emplacement
+   ========================= */
+
+  .horaire {
+    grid-template-columns: 1fr 1fr;
+    padding: 1.5rem var(--gutter);
+  }
+
+  .horaire-content {
+    padding: 1rem 1.25rem;
+  }
+
+  .horaire-title { font-size: 1.6rem; }
+  .horaire-address .adresse-line { font-size: 1rem; }
+  .HeureOuverture { font-size: .95rem; }
+
+  /* =========================
+   Footer
+   ========================= */
+
+  .footer-top { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom { grid-template-columns: 1fr 220px; }
+  .fb-newsletter { order: 3; }
+}
+
+@media (max-width: 767px) {
+
+    /*petits appareils*/
+
+  .hero{
+    padding: 0;
+    padding-bottom: 2rem;
+  }
+
+  /* =========================
+   Section des Produits
+   ========================= */
+
+  /* carte produit - 1 colonnes */
+  .produit{
+    flex: 1 1 calc(80% - (var(--gutter)));
+    max-width: calc(65% - (var(--gutter)));
+  }
+
+  /* =========================
+   Emplacement
+   ========================= */
+
+  .horaire {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "media";
+    padding: 1rem var(--gutter);
+  }
+
+  .horaire-content {
+    padding: 1rem;
+  }
+
+  .horaire-title { font-size: 1.5rem; }
+  .horaire-address .adresse-line { font-size: .98rem; }
+  .HeureOuverture { font-size: .92rem; }
+
+  .horaire-media {
+    border-radius: .125rem;
+  }
+
+  .btn-direction { align-self: stretch; text-align: center; }
+
+  /* =========================
+   Footer
+   ========================= */
+
+  .footer-top { grid-template-columns: 1fr; gap: 1rem; padding-bottom: 1rem; }
+  .footer-bottom { grid-template-columns: 1fr; gap: 1rem; }
+  .newsletter-form { flex-direction: row; }
+  .footer-copyright { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-top: 1rem; }
+}
+
